@@ -25,5 +25,5 @@ class testCalculations(unittest.TestCase):
             Calculations.division(4, 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

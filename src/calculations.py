@@ -1,4 +1,3 @@
-
 class Calculations:
     @staticmethod
     def sum(a: int, b: int) -> int:
