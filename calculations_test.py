@@ -1,5 +1,17 @@
-from src.calculations import Calculations
 import pytest
+
+try:
+    from src.calculations import Calculations
+except ImportError:
+    print("File path error")
+finally:
+    import sys
+    import os
+
+    # Add the src directory to the Python path
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
+
+    from src.calculations import Calculations
 
 
 def test_sum():

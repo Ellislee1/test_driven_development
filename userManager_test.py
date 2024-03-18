@@ -1,5 +1,17 @@
 from unittest.mock import patch, MagicMock
-from src.userManager import UserManager
+
+try:
+    from src.userManager import UserManager
+except ImportError:
+    print("File path error")
+finally:
+    import sys
+    import os
+
+    # Add the src directory to the Python path
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
+
+    from src.userManager import UserManager
 
 
 @patch("src.userManager.sqlite3.connect")

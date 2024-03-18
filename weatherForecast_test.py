@@ -1,5 +1,17 @@
 from unittest.mock import patch, Mock
-from src.weatherForecast import WeatherForecast
+
+try:
+    from src.weatherForecast import WeatherForecast
+except ImportError:
+    print("File path error")
+finally:
+    import sys
+    import os
+
+    # Add the src directory to the Python path
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
+
+    from src.weatherForecast import WeatherForecast
 
 
 @patch("src.weatherForecast.requests.get")
