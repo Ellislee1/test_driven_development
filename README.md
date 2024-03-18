@@ -58,3 +58,43 @@ It uses the `.flake8` file to adjust the parameters:
 [flake8]
 max-line-length = 120
 ```
+If the file is not linted correctly this action will fail.
+## Unit tests
+The unit test CI/CD action is found in `.github/workflows/unittest.yml` and looks like:
+```yml
+name: Run Unit Test via Pytest  
+  
+on: [push]  
+  
+jobs:  
+  build:  
+    runs-on: ubuntu-latest  
+    strategy:  
+      matrix:  
+        python-version: ["3.11"]  
+  
+    steps:  
+      - uses: actions/checkout@v3  
+      - name: Set up Python ${{ matrix.python-version }}  
+        uses: actions/setup-python@v4  
+        with:  
+          python-version: ${{ matrix.python-version }}  
+      - name: Install dependencies  
+        run: |  
+          python -m pip install --upgrade pip
+          python -m pip install coverage pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi   
+      - name: Test with pytest  
+        run: |  
+          coverage run -m pytest  -v -s  
+      - name: Generate Coverage Report  
+        run: |  
+          coverage report -m
+```
+
+This pulls the code and runs the unit tests using `pytest`. If any test case fails the action will fail.
+
+---
+## Unit Test Files
+Unit test files have the prefix `*_test.py` e.g. `calculations_test.py`. The `pytest` package should be consulted for how to utilise them. 
+
