@@ -4,7 +4,6 @@ from src.weatherForecast import WeatherForecast
 
 
 class TestWeatherForecast(unittest.TestCase):
-
     @patch("src.weatherForecast.requests.get")
     def test_get_current_temperature(self, mock_get):
         mock_response = Mock()

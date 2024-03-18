@@ -4,7 +4,6 @@ from src.userManager import UserManager
 
 
 class TestUsermanager(unittest.TestCase):
-
     @patch("src.userManager.sqlite3.connect")
     def test_create_user(self, mock_connect):
         mock_cursor = MagicMock()

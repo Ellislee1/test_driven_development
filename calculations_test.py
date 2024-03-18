@@ -3,7 +3,6 @@ from src.calculations import Calculations
 
 
 class testCalculations(unittest.TestCase):
-
     def test_sum(self):
         self.assertEquals(Calculations.sum(1, 1), 2)
         self.assertEquals(Calculations.sum(8, 12), 20)
