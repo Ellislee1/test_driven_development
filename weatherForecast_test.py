@@ -3,6 +3,7 @@ import sys
 import os
 
 # Add the src directory to the Python path
+# flake8: noqa
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
 from src.weatherForecast import WeatherForecast
