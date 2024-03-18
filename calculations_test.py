@@ -1,17 +1,11 @@
 import pytest
+import sys
+import os
 
-try:
-    from src.calculations import Calculations
-except ImportError:
-    print("File path error")
-finally:
-    import sys
-    import os
+# Add the src directory to the Python path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
 
-    # Add the src directory to the Python path
-    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "src")))
-
-    from src.calculations import Calculations
+from src.calculations import Calculations
 
 
 def test_sum():
